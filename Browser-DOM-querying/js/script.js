@@ -93,3 +93,46 @@ let allergyWarningSection = document.querySelector('.allergy-warning');
 allergyWarningSection.style.display = 'flex';
 allergyWarningSection.style.flexDirection = 'column';
 allergyWarningSection.style.alignItems = 'center';
+
+
+// Hole food-desc sections und gebe ihnen Rahmen
+let foodDescriptions = document.querySelectorAll('.food-desc');
+console.log(foodDescriptions);
+foodDescriptions.forEach(({style: foodDescStyle}) => {
+    foodDescStyle.border = '5px orange solid';
+    foodDescStyle.width = '6em';
+    foodDescStyle.height = '6em';
+    foodDescStyle.borderRadius = '50%';
+    foodDescStyle.display = 'flex';
+    foodDescStyle.justifyContent = 'center';
+    foodDescStyle.alignItems = 'center';
+});
+
+
+// Hole footer und mache ihn zu Flexbox
+let footer = document.querySelector('.footer');
+footer.style.display = 'flex';
+footer.style.flexDirection = 'column';
+footer.style.justifyContent = 'center';
+footer.style.alignItems = 'center';
+footer.style.gap = '2em';
+footer.style.flexWrap = 'wrap';
+
+
+// Definiere neues Media-Query aus JavaScript heraus
+let footerMediaQuery = window.matchMedia('(min-width: 1024px)');
+
+// Handler-Funktion zum Behandeln des Media-Query-Change Events
+function handleFooterViewportChange(mediaQueryEvt) {
+    if (mediaQueryEvt.matches) {
+        footer.style.flexDirection = 'row';
+    } else {
+        footer.style.flexDirection = 'column';
+    }
+}
+
+// Haenge Handler-Funktion an Media-Query an change-Event an
+footerMediaQuery.addEventListener('change', handleFooterViewportChange);
+
+// Rufe Handler-Funktion ein mal initial auf
+handleFooterViewportChange(footerMediaQuery);
