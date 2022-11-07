@@ -1,5 +1,5 @@
 
-
+// Ohne Klassen und IDs
 /* 
 function printParentChain(childElement) {
     // Beginne Eltern-Kette mit dem Namen des Startelements selbst
