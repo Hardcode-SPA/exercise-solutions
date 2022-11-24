@@ -15,10 +15,12 @@
     <h1 class="text-center text-secondary">Pokemon Cards</h1>
 
     <div class="container">
-        <form id="search-pokemon-form" class="form-inline mb-5">
+        <form autocomplete="off" id="search-pokemon-form" class="form-inline mb-5">
             <div class="form-group row">
                 <div class="col-sm-10">
                     <input type="text" class="form-control-plaintext bg-light p-2" id="input-query" placeholder="Type in the pokemon you're looking for...">
+                    <ul class="list-group list-group-flush position-absolute col-sm-8" style="z-index: 9999;">
+                    </ul>
                 </div>
                 <div class="col-sm-2">
                     <button type="submit" class="btn btn-light p-2">Search</button>
@@ -26,22 +28,28 @@
             </div>
         </form>
 
-        <div class="card mx-auto" style="width: 22rem;">
+        <div class="d-flex justify-content-center m-5 visually-hidden" id="query-spinner">
+            <div class="spinner-border text-light" role="status" style="width: 8rem; height: 8rem;">
+              <span class="visually-hidden">Loading...</span>
+            </div>
+        </div>
+
+        <div class="card mx-auto visually-hidden" id="pokemon-card" style="width: 22rem;">
             <div class="card-header bg-dark text-light">
-                <h3 class="text-center">Pikachu</h3>
+                <h3 class="text-center text-uppercase">Pikachu</h3>
             </div>
             <div class="card-body bg-dark text-light">
                 <div class="text-center mb-4">
                     <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png" class="rounded img-thumbnail" alt="Pikachu">
                 </div>
                 <h5 class="card-title text-center">Stats</h5>
-                <ul class="list-group mb-4 list-group-flush">
+                <ul class="list-group mb-4 list-group-flush" id="poke-stats">
                     <li class="list-group-item bg-dark text-light">Dies</li>
                     <li class="list-group-item bg-dark text-light">Das</li>
                 </ul>
 
                 <h5 class="card-title text-center">Abbilities</h5>
-                <ul class="list-group list-group-flush">
+                <ul class="list-group list-group-flush" id="poke-abilities">
                     <li class="list-group-item bg-dark text-light">Dies</li>
                     <li class="list-group-item bg-dark text-light">Das</li>
                 </ul>
