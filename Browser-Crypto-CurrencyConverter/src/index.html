@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Currency converter</title>
+  </head>
+  <body>
+    
+    <div id="app" class="container p-5">
+      <h1>Currency converter</h1>
+
+      <form>
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text bg-primary">Crypto currency</span>
+          </div>
+          <select class="form-select" id="select-crypto">
+            <option value="none" selected>Choose Crypto Currency...</option>
+            <option>BTC</option>
+            <option>ETH</option>
+            <option>LTC</option>
+          </select>
+        </div>
+
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text">Amount</span>
+          </div>
+          <input type="number" class="form-control" id="input-crypto-amount" placeholder="Type in the amount of coins">
+        </div>
+
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text bg-danger">Fiat currency</span>
+          </div>
+          <select class="form-select" id="select-fiat">
+            <option value="none" selected>Choose Fiat Currency...</option>
+            <option>EUR</option>
+            <option>GBP</option>
+            <option>USD</option>
+          </select>
+        </div>
+
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text">Amount</span>
+          </div>
+          <input type="number" class="form-control" id="input-fiat-amount" placeholder="The calculated amount of fiat currency" disabled readonly>
+        </div>
+        
+        <!-- <button type="submit" class="btn btn-primary">Calculate</button> -->
+      </form>
+    </div>
+
+    <script type="module" src="js/main.js"></script>
+  </body>
+</html>
