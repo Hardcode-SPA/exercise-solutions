@@ -23,12 +23,15 @@ async function fetchExchangeRate(cryptoCurrency, fiatCurrency) {
     // Wenn Anfrageergebnis positiv (HTTP-Statuscode 2XX)
     if (exchangeRes.ok) {
         // Extrahiere errechneten Wert und gebe zurueck
-        return exchangeBody.data.amount;
+        //return exchangeBody.data.amount;
+        return Promise.resolve(exchangeBody.data.amount)
 
     } else { // Fehlerfall der Anfrage
         // Gebe null zurueck, um Aufrufer wissen zu lassen,
         // dass Fehler entstanden ist
-        return null;
+        //return null;
+        console.log(exchangeBody);
+        return Promise.reject(exchangeBody.errors[0].message)
     }
 }
 
