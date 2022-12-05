@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Student Management</title>
+  </head>
+  <body>
+    
+    <div id="app" class="container">
+      <h1>Student Management</h1>
+
+      <form class="row g-3 needs-validation" id="add-student-form" novalidate>
+        <div class="col-md-6">
+          <label for="name-input" class="form-label">Name</label>
+          <input type="text" class="form-control" id="name-input" value="Mark" required>
+          <div class="valid-feedback">
+            Looks good!
+          </div>
+        </div>
+        <div class="col-md-6">
+          <label for="class-id-input" class="form-label">Class ID</label>
+          <input type="text" class="form-control" id="class-id-input" value="Fitness-Class" required>
+          <div class="valid-feedback">
+            Looks good!
+          </div>
+        </div>
+        <div class="col-md-3">
+          <label for="city-input" class="form-label">City</label>
+          <input type="text" class="form-control" id="city-input" value="Hamburg" required>
+          <div class="invalid-feedback">
+            Please provide a valid city.
+          </div>
+        </div>
+        <div class="col-md-3">
+          <label for="zip-input" class="form-label">Zip</label>
+          <input type="text" class="form-control" id="zip-input" value="20253" required>
+          <div class="invalid-feedback">
+            Please provide a valid city.
+          </div>
+        </div>
+        <div class="col-md-3">
+          <label for="street-input" class="form-label">Street</label>
+          <input type="text" class="form-control" id="street-input" value="Gaertnerstrasse" required>
+          <div class="invalid-feedback">
+            Please provide a valid city.
+          </div>
+        </div>
+        <div class="col-md-3">
+          <label for="street-no-input" class="form-label">Street-No.</label>
+          <input type="text" class="form-control" id="street-no-input" value="1" required>
+          <div class="invalid-feedback">
+            Please provide a valid zip.
+          </div>
+        </div>
+        
+        <div class="col-12">
+          <button class="btn btn-primary" type="submit">Submit form</button>
+        </div>
+      </form>
+
+      <hr>
+
+      <table class="table" id="students-table">
+        <thead>
+          <tr>
+            <!-- <th scope="col">ID</th> -->
+            <th scope="col">Name</th>
+            <th scope="col">Class ID</th>
+            <th scope="col">City</th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td colspan="0">Nothing to show yet...</td>
+          </tr>
+          <!-- Wird von JS erzeugt -->
+        </tbody>
+      </table>
+    </div>
+
+    <script type="module" src="js/main.js"></script>
+  </body>
+</html>
