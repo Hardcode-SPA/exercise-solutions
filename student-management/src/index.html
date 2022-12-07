@@ -10,57 +10,59 @@
     <div id="app" class="container">
       <h1>Student Management</h1>
 
-      <form class="row g-3 needs-validation" id="add-student-form" novalidate>
+      <!-- Formular zum Anlegen neuer Studis -->
+      <form class="row g-3 needs-validation" id="add-student-form" >
         <div class="col-md-6">
-          <label for="name-input" class="form-label">Name</label>
-          <input type="text" class="form-control" id="name-input" value="Mark" required>
+          <label for="add-name-input" class="form-label">Name</label>
+          <input type="text" class="form-control" id="add-name-input" value="Mark" required>
           <div class="valid-feedback">
             Looks good!
           </div>
         </div>
         <div class="col-md-6">
-          <label for="class-id-input" class="form-label">Class ID</label>
-          <input type="text" class="form-control" id="class-id-input" value="Fitness-Class" required>
+          <label for="add-class-id-input" class="form-label">Class ID</label>
+          <input type="text" class="form-control" id="add-class-id-input" value="Fitness-Class" minlength="6" required>
           <div class="valid-feedback">
             Looks good!
           </div>
         </div>
         <div class="col-md-3">
-          <label for="city-input" class="form-label">City</label>
-          <input type="text" class="form-control" id="city-input" value="Hamburg" required>
+          <label for="add-city-input" class="form-label">City</label>
+          <input type="text" class="form-control" id="add-city-input" value="Hamburg" required>
           <div class="invalid-feedback">
             Please provide a valid city.
           </div>
         </div>
         <div class="col-md-3">
-          <label for="zip-input" class="form-label">Zip</label>
-          <input type="text" class="form-control" id="zip-input" value="20253" required>
+          <label for="add-zip-input" class="form-label">Zip</label>
+          <input type="text" class="form-control" id="add-zip-input" value="20253" required>
           <div class="invalid-feedback">
             Please provide a valid city.
           </div>
         </div>
         <div class="col-md-3">
-          <label for="street-input" class="form-label">Street</label>
-          <input type="text" class="form-control" id="street-input" value="Gaertnerstrasse" required>
+          <label for="add-street-input" class="form-label">Street</label>
+          <input type="text" class="form-control" id="add-street-input" value="Gaertnerstrasse" required>
           <div class="invalid-feedback">
             Please provide a valid city.
           </div>
         </div>
         <div class="col-md-3">
-          <label for="street-no-input" class="form-label">Street-No.</label>
-          <input type="text" class="form-control" id="street-no-input" value="1" required>
+          <label for="add-street-no-input" class="form-label">Street No.</label>
+          <input type="text" class="form-control" id="add-street-no-input" value="1" required>
           <div class="invalid-feedback">
             Please provide a valid zip.
           </div>
         </div>
         
         <div class="col-12">
-          <button class="btn btn-primary" type="submit">Submit form</button>
+          <button class="btn btn-primary" type="submit">Add student</button>
         </div>
       </form>
 
       <hr>
 
+      <!-- Tabelle fuer die Studi Liste -->
       <table class="table" id="students-table">
         <thead>
           <tr>
@@ -68,9 +70,9 @@
             <th scope="col">Name</th>
             <th scope="col">Class ID</th>
             <th scope="col">City</th>
-            <th scope="col"></th>
-            <th scope="col"></th>
-            <th scope="col"></th>
+            <th scope="col" class="text-center">Details</th>
+            <th scope="col" class="text-center">Edit</th>
+            <th scope="col" class="text-center">Delete</th>
           </tr>
         </thead>
         <tbody>
@@ -80,6 +82,137 @@
           <!-- Wird von JS erzeugt -->
         </tbody>
       </table>
+
+      <!-- Pagination -->
+      <nav>
+        <ul class="pagination justify-content-center" id="pagination-list">
+          <li class="page-item">
+            <a class="page-link" href="#" aria-label="Previous">
+              <span aria-hidden="true">&laquo;</span>
+            </a>
+          </li>
+          
+          <li class="page-item active"><a class="page-link" href="#">1</a></li>
+          
+          <li class="page-item">
+            <a class="page-link" href="#" aria-label="Next">
+              <span aria-hidden="true">&raquo;</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <!-- Offcanvas fuer die Studi Detail Ansicht -->
+      <div class="offcanvas offcanvas-top" tabindex="-1" id="offcanvas-details" data-bs-scroll="true" aria-labelledby="offcanvasTopLabel">
+        <div class="offcanvas-header">
+          <h5 id="offcanvasTopLabel">Student Details</h5>
+          <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+          <!-- Wird von JS erzeugt -->
+        </div>
+      </div>
+    </div>
+
+
+
+    <!-- Modal zum Bearbeiten von Studis -->
+    <div class="modal" id="edit-student-modal" tabindex="-1">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Edit Student</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form class="row g-3 needs-validation" id="edit-student-form">
+              <h4>Meta data</h4>
+              <div class="col-md-12">
+                <label for="edit-id-input" class="form-label">ID</label>
+                <input type="text" class="form-control" id="edit-id-input" value="123123hjhjkh1kj2h3kj1h2" required disabled>
+              </div>
+              <div class="col-md-6">
+                <label for="edit-name-input" class="form-label">Name</label>
+                <input type="text" class="form-control" id="edit-name-input" value="Mark" required>
+                <div class="valid-feedback">
+                  Looks good!
+                </div>
+              </div>
+              <div class="col-md-6">
+                <label for="edit-class-id-input" class="form-label">Class ID</label>
+                <input type="text" class="form-control" id="edit-class-id-input" value="Fitness-Class" minlength="6" required>
+                <div class="valid-feedback">
+                  Looks good!
+                </div>
+              </div>
+              <hr>
+              <h4>Address</h4>
+              <div class="col-md-8">
+                <label for="edit-city-input" class="form-label">City</label>
+                <input type="text" class="form-control" id="edit-city-input" value="Hamburg" required>
+                <div class="invalid-feedback">
+                  Please provide a valid city.
+                </div>
+              </div>
+              <div class="col-md-4">
+                <label for="edit-zip-input" class="form-label">Zip</label>
+                <input type="text" class="form-control" id="edit-zip-input" value="20253" pattern="[0-9]+" required>
+                <div class="invalid-feedback">
+                  Please provide a valid ZIP code.
+                </div>
+              </div>
+              <div class="col-md-8">
+                <label for="edit-street-input" class="form-label">Street</label>
+                <input type="text" class="form-control" id="edit-street-input" value="Gaertnerstrasse" required>
+                <div class="invalid-feedback">
+                  Please provide a valid city.
+                </div>
+              </div>
+              <div class="col-md-4">
+                <label for="edit-street-no-input" class="form-label">Street No.</label>
+                <input type="text" class="form-control" id="edit-street-no-input" value="1" pattern="[0-9]+" required>
+                <div class="invalid-feedback">
+                  Please provide a valid zip.
+                </div>
+              </div>
+
+              <hr>
+
+              <div class="col-12">
+                <button class="btn btn-primary" type="submit">Submit changes</button>
+              </div>
+
+              <div class="card border-danger mb-3 mx-auto visually-hidden" id="error-box" style="max-width: 18rem;">
+                <div class="card-body text-danger">
+                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- Modal zum Bestaetigen der Loeschung von Studis -->
+    <div class="modal" id="delete-student-modal" tabindex="-1">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Delete student</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <h5>Are you sure you want to delete that student entry?</h5>
+            <h6><b>ID: </b><span id="delete-student-id-span"> 123123hgyg1hj23ghj12g3hjg</span></h6>
+            <p>After deletion the student's data won't be accessible anymore.</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+            <button type="button" class="btn btn-danger" id="delete-student-confirm-btn">Confirm deletion</button>
+          </div>
+        </div>
+      </div>
     </div>
 
     <script type="module" src="js/main.js"></script>
