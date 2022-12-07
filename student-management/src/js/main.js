@@ -10,15 +10,23 @@ import "bootstrap-icons/font/bootstrap-icons.css";
 // Import our custom JS
 import { fetchStudents, fetchStudent, postStudent, putStudent, deleteStudent } from './data.js';
 /* -------------------------------------------------------------------------------  */
+
+
 // Konstante Pagegroesse
 const PAGE_SIZE = 10;
 // Aktuelle Anzahl uebersprungener Eintraege
 let currentSkip = 0;
 
-// Hole initial erste Eintraege
-getStudents(PAGE_SIZE, currentSkip);
+// IIFE (Immediately invoked function expression) fuer initialen Code
+(function () {
+    // Hole initial erste Eintraege
+    getStudents(PAGE_SIZE, currentSkip);
 
-
+    // Referenz auf Hinzufuegemaske neuer Studenten
+    let addStudentForm = document.querySelector('#add-student-form');
+    // EventListener (submit) fuer das Hinzufuegen neuer Studenten
+    addStudentForm.addEventListener('submit', submitNewStudent);
+})();
 
 // Funktion zum Holen und Rendern aller Studenten
 async function getStudents(limit, skip, classId) {
@@ -412,6 +420,7 @@ function createEditView(studentData) {
     editModal.show();
 }
 
+// Clickhandler fuer Delete-Button
 function handleDeleteClick(evt) {
     // Extrahiere Studenten-ID aus der zugehoerigen Zeile
     let tableRow = evt.target.closest('tr');
@@ -455,11 +464,7 @@ function handleDeleteClick(evt) {
     deleteModal.show();
 }
 
-
-let addStudentForm = document.querySelector('#add-student-form');
-addStudentForm.addEventListener('submit', submitNewStudent);
-
-
+// Submithandler fuer Hinzufuegemaske
 function submitNewStudent(evt) {
     // Verhindere die Standard Eventbehandlung des Browsers
     evt.preventDefault();
