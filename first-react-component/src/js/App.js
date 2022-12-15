@@ -16,12 +16,40 @@ class App extends Component {
     // State fuer die App-Komponente
     this.state = {
       // Speichere das Array von Post-Datensaetzen im State
-      posts: DATA.posts
+      posts: []
     }
 
     /* this-Binding */
     this.likePostHandler = this.likePostHandler.bind(this);
   }
+
+  /* ---- Life-Cycle-Methods ---- */
+  componentDidMount() {
+    console.log("componentDidMount");
+    let storedPosts = JSON.parse(localStorage.getItem('posts'));
+
+    if ((storedPosts !== null) && storedPosts.length > 0) {
+      this.setState({
+        posts: storedPosts
+      });
+    
+    } else {
+      this.setState({
+        posts: DATA.posts
+      });
+    }
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    console.log('componentDidUpdate');
+    localStorage.setItem('posts', JSON.stringify(this.state.posts));
+  }
+
+  componentWillUnmount() {
+    console.log('componentWillUnmount');
+  }
+
+
 
   // Methode zum erhoehen der Likes eine Post-Datensatzes anhand der ID des Datensatzes
   likePostHandler(id) {
@@ -37,6 +65,9 @@ class App extends Component {
 
     // Erhoehe die Anzahl der Likes im gesuchten Post-Datensatz um 1
     postsCopy[postIndex].likes += 1;
+
+    // Setze Indikator dafuer, dass bereits gelikt wurde
+    postsCopy[postIndex].hasLiked = true;
 
     // Tausche veraenderten Datensatz im State der App-Komponente aus
     // (Das stoesst das Neu-Rendern der View an)

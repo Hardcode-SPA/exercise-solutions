@@ -5,10 +5,10 @@ class BlogPost extends Component {
         super(props);
 
         // State fuer die BlogPost-Komponente
-        this.state = {
-            // Indikator dafuer, ob bereits auf den Like-Knopf gedrueckt wurde
-            hasLiked: false
-        };
+        // this.state = {
+        //     // Indikator dafuer, ob bereits auf den Like-Knopf gedrueckt wurde
+        //     hasLiked: false
+        // };
 
         /* this-Binding */
         this.handleLikeClick = this.handleLikeClick.bind(this);
@@ -21,9 +21,9 @@ class BlogPost extends Component {
         this.props.likeCallback(this.props.post.id);
 
         // Setzt im lokalen State den Like-Indikator auf true (User hat gelikt)
-        this.setState({
-            hasLiked: true
-        });
+        // this.setState({
+        //     hasLiked: true
+        // });
     }
 
 
@@ -33,9 +33,10 @@ class BlogPost extends Component {
                 {/* Fuege den Titel des ueber die Props uebergebenen Posts ein */}
                 <h3>{this.props.post.title}</h3>
                 {/* Fuege den Body des ueber die Props uebergebenen Posts ein */}
+
                 <p>{this.props.post.body}</p>
                 {/* Button zum Liken, der auch die Anzahl der bisherigen Likes anzeigt. */}
-                <button disabled={this.state.hasLiked} onClick={this.handleLikeClick}>Like {this.props.post.likes}</button>
+                <button disabled={this.props.post.hasLiked} onClick={this.handleLikeClick}>Like {this.props.post.likes}</button>
             </div>
         );
     }
