@@ -1,0 +1,76 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+
+.outline-btn {
+  color: #31bdec;
+}
+
+.filled-btn {
+  color: white;
+  background-color: #31bdec;
+}
+
+.controls > button {
+  border: 2px solid #add8e6;
+  margin-inline: 1em;
+}
+
+.numbers {
+  display: flex;
+  justify-content: space-between;
+  margin: 1em;
+  gap: 1em;
+  min-height: 3.2em;
+}
+
+.numbers > div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #31bdec;
+  border-radius: 50%;
+  padding: 1em;
+  height: 1em;
+  width: 1em;
+}
+
+.blend-in {
+  animation: blend-in 0.5s;
+}
+
+.blend-out {
+  animation: blend-out 0.5s;
+}
+
+.special-number {
+  background-color: #31bdec;
+}
+
+@keyframes blend-in {
+  from {
+    opacity: 0%;
+    transform: scale(0);
+  }
+
+  to {
+    opacity: 100%;
+    transform: scale(1);
+  }
+}
+
+@keyframes blend-out {
+  from {
+    opacity: 100%;
+    transform: scale(1);
+  }
+
+  to {
+    opacity: 0%;
+    transform: scale(0);
+  }
+}
