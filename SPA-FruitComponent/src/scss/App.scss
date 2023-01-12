@@ -1,0 +1,22 @@
+
+body {
+  div.container {
+    background-color: lightgrey;
+  }
+
+  h1 {
+    color: black;
+  }
+
+
+  button {
+    border: 1px solid gray;
+    padding: 0.2em;
+    border-radius: 10px;
+    background-color: white;
+  }
+
+  button:active {
+    background-color: lightgray;
+  }
+}
